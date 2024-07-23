@@ -1,0 +1,9 @@
+services:
+  web-client:
+    build:
+      context: ../
+      dockerfile: ./docker/web-client.Dockerfile
+    env_file:
+      - ../.env
+    network_mode: host
+    command: npm run dev
