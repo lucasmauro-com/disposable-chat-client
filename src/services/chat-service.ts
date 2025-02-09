@@ -8,7 +8,7 @@ export interface Message {
 
 export class ChatService {
   // @ts-ignore
-  private url = process.env.SERVER_URL
+  private url = import.meta.env.VITE_SERVER_URL ?? 'wss://chat.lucasmauro.com/ws'
   private connection: WebSocket | null = null
   
   public ready: boolean = false
