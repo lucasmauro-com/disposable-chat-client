@@ -28,7 +28,15 @@
           </ul>
         </v-col>
       </v-row>
-      <v-row>
+      <v-row v-show="isMobile">
+        <v-spacer></v-spacer>
+        <v-col cols="12">
+          <v-text-field @keydown.enter.prevent="send" v-model="typedMessage" label="Enter your message..."></v-text-field>
+          <v-btn :disabled="messageTooLong" block size="large" @click="send">Send</v-btn>
+        </v-col>
+        <v-spacer></v-spacer>
+      </v-row>
+      <v-row v-show="!isMobile">
         <v-spacer></v-spacer>
         <v-col cols="11">
           <v-text-field @keydown.enter.prevent="send" v-model="typedMessage" label="Enter your message..."></v-text-field>
@@ -62,6 +70,9 @@ export default {
     }
   }),
   computed: {
+    isMobile() {
+      return screen.width <= 760;
+    },
     roomName() {
       return chatStore.room
     },
@@ -87,7 +98,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 ul {
   list-style-type: none;
 }
@@ -99,7 +110,7 @@ span {
 .message-history {
   overflow-y: auto;
   overflow-x: hidden;
-  height: 70vh;
+  height: 65vh;
   flex-direction: column-reverse;
 }
 </style>

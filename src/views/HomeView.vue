@@ -14,7 +14,7 @@
     </v-row>
   </v-container>
   <v-form ref="joinForm" @keydown.enter.prevent="enterRoom">
-    <v-container class="pa-12">
+    <v-container class="registration-input pa-12">
       <v-row align="center">
         <v-spacer></v-spacer>
         <v-col align="center" cols="12" xs="12" sm="12" md="6" lg="6" xl="6" xxl="6">
@@ -96,3 +96,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.registration-input {
+  max-width: 700px;
+}
+</style>
